@@ -15,11 +15,12 @@ public class DeepestPitAnswer
          * Depth is the smaller of the two differences between the points. [*]
          * 
          * Use change in direction to determine a pit?
-         * Try get relevent points below 0 that actually matter in defining a pit.
+         * Try get relevent points below 0 that actually matter in defining a pit. (This is not true)
          * An actual Pit bottom goes an indefinite amount left till a peak is found, same for the right?
          * 
          * Use all peaks and valleys to determine the depth of the pit. [Try]
          * What if index 0 and ^1 are peaks? [*]
+         * I need to think about the fact that P >= 0.
         */
 
         // Guard clause ensuring we can capture at least 3 points
@@ -44,8 +45,29 @@ public class DeepestPitAnswer
             }
         }
 
+        // Add the last point to the peaks
+        peaks.Add(points[^1]);
+
+        // Guard clause ensuring we have at least 3 peaks
+        if (peaks.Count < 3)
+        {
+            Console.WriteLine("Not enough peaks to form a pit.");
+            return -1;
+        }
+
         // Default return -1
-        return -1;
+        var deepestPit = -1;
+
+        for (int i = 1; i < peaks.Count - 1; i++)
+        {
+            // Find the lowest point between the peaks
+            var lowestPoint = Math.Min(peaks[i] - peaks[i - 1], peaks[i] - peaks[i + 1]);
+
+            // Update the deepest pit
+            deepestPit = Math.Max(deepestPit, lowestPoint);
+        }
+
+        return deepestPit;
     }
 
     // Is peak/valley function

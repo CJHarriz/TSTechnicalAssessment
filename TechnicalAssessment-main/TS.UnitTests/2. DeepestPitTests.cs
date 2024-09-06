@@ -20,7 +20,7 @@ public class DeepestPitTests
 
     // The requested test
     [TestMethod]
-    public void Q2_TestWithMultipleDelimetersAndSpaces()
+    public void Q2_TestWithRequestedValues()
     {
         // Arrange
         var input = new[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 };
