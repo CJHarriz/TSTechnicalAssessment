@@ -29,21 +29,29 @@ public class DeepestPitAnswer
             return -1;
         }
 
-        // Get all the peaks and valleys
-        var peaks = new List<int>();
+        // Set up collection of points that are peaks/valleys
+        var peaks = new List<int>()
+        {
+            points[0]
+        };
 
-        // Compare the peaks and valleys to find the deepest pit
+        // Loop through the points excluding the added ends to find peaks and valleys
+        for (int i = 1; i < points.Length - 1; i++)
+        {
+            if (IsPointAPeak(points[i], points[i-1], points[i+1]))
+            {
+                peaks.Add(points[i]);
+            }
+        }
 
         // Default return -1
         return -1;
     }
 
     // Is peak/valley function
-    private bool IsPointAPeak(int[] points, int index)
-    {
-        // Peaks have either smaller points to the left and right or larger points to the left and right
-
-    }
+    // TODO: This function isnt the most readable, potentially refactor.
+    private static bool IsPointAPeak(int point, int prePoint, int postPoint) => 
+        (point > prePoint && point > postPoint) || (point < prePoint && point < postPoint);
 }
 
 #region Footnotes
