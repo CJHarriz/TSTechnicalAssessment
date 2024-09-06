@@ -33,4 +33,4 @@ The technical assessment seed project
   I enjoyed the challenge and I am happy with the solution I came up with.
   Thank you for the opportunity to complete this assessment!
 
-Here's a dog image: ![dog](https://blog.tryfi.com/content/images/size/w1000/2024/03/puppy-running-in-garden-1.jpg)
+Here's an image of a dog because i had a few more minutes: ![dog](https://blog.tryfi.com/content/images/size/w1000/2024/03/puppy-running-in-garden-1.jpg)
