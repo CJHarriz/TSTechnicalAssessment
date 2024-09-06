@@ -4,16 +4,29 @@ public class DeepestPitAnswer
 {
     public static int Solution(int[] points)
     {
-        /* Breakdown (Writing out my thoughts)
+        /* Breakdown - (Writing out my thoughts)
          * A pit requires 3 provided points.
          *  - The first point P must be greater or equals to 0
          *  - The second point Q must be less than the first point P and the third point R
          *  - The third point R must be greater than the second point Q
          *  
          * Point from P continuously decrease until point Q is found in the sequence
+         * Likewise the sequence from Q continuously increases until point R is found.
+         * Depth is the smaller of the two differences between the points. [*]
+         * 
+         * Use change in direction to determine a pit?
+         * 
         */
 
+        // Guard clause ensuring we can capture at least 3 points
+        if (points.Length < 3)
+        {
+            Console.WriteLine("Not enough points to form a pit.");
+            return -1;
+        }
 
+        // Default return -1
+        return -1;
     }
 }
 
