@@ -19,6 +19,7 @@ public class DeepestPitAnswer
          * An actual Pit bottom goes an indefinite amount left till a peak is found, same for the right?
          * 
          * Use all peaks and valleys to determine the depth of the pit. [Try]
+         * What if index 0 and ^1 are peaks? [*]
         */
 
         // Guard clause ensuring we can capture at least 3 points
@@ -29,11 +30,19 @@ public class DeepestPitAnswer
         }
 
         // Get all the peaks and valleys
+        var peaks = new List<int>();
 
         // Compare the peaks and valleys to find the deepest pit
 
         // Default return -1
         return -1;
+    }
+
+    // Is peak/valley function
+    private bool IsPointAPeak(int[] points, int index)
+    {
+        // Peaks have either smaller points to the left and right or larger points to the left and right
+
     }
 }
 
