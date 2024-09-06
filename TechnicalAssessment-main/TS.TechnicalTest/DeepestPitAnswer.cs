@@ -60,8 +60,15 @@ public class DeepestPitAnswer
 
         for (int i = 1; i < peaks.Count - 1; i++)
         {
+            if (peaks[i] > peaks[i -1] || peaks[i] > peaks[i + 1])
+            {
+                continue;
+            }
             // Find the lowest point between the peaks
-            var lowestPoint = Math.Min(peaks[i] - peaks[i - 1], peaks[i] - peaks[i + 1]);
+            var lowestPoint = Math.Max(peaks[i] - peaks[i - 1], peaks[i] - peaks[i + 1]);
+
+            // Flip sign to get the depth of the pit
+            lowestPoint *= -1;
 
             // Update the deepest pit
             deepestPit = Math.Max(deepestPit, lowestPoint);
