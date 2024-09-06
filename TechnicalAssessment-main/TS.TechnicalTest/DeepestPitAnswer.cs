@@ -4,33 +4,13 @@ public class DeepestPitAnswer
 {
     public static int Solution(int[] points)
     {
-        /* Breakdown - (Writing out my thoughts)
-         * A pit requires 3 provided points.
-         *  - The first point P must be greater or equals to 0
-         *  - The second point Q must be less than the first point P and the third point R
-         *  - The third point R must be greater than the second point Q
-         *  
-         * Point from P continuously decrease until point Q is found in the sequence
-         * Likewise the sequence from Q continuously increases until point R is found.
-         * Depth is the smaller of the two differences between the points. [*]
-         * 
-         * Use change in direction to determine a pit?
-         * Try get relevent points below 0 that actually matter in defining a pit. (This is not true)
-         * An actual Pit bottom goes an indefinite amount left till a peak is found, same for the right?
-         * 
-         * Use all peaks and valleys to determine the depth of the pit. [Try]
-         * What if index 0 and ^1 are peaks? [*]
-         * I need to think about the fact that P >= 0.
-        */
-
-        // Guard clause ensuring we can capture at least 3 points
+        // Ensure we have at least 3 points
         if (points.Length < 3)
         {
             Console.WriteLine("Not enough points to form a pit.");
             return -1;
         }
 
-        // Set up collection of points that are peaks/valleys
         var peaks = new List<int>()
         {
             points[0]
@@ -44,8 +24,6 @@ public class DeepestPitAnswer
                 peaks.Add(points[i]);
             }
         }
-
-        // Add the last point to the peaks
         peaks.Add(points[^1]);
 
         // Guard clause ensuring we have at least 3 peaks
@@ -55,9 +33,9 @@ public class DeepestPitAnswer
             return -1;
         }
 
-        // Default return -1
         var deepestPit = -1;
 
+        // Find the deepest pit
         for (int i = 1; i < peaks.Count - 1; i++)
         {
             if (peaks[i] > peaks[i -1] || peaks[i] > peaks[i + 1])
@@ -70,7 +48,6 @@ public class DeepestPitAnswer
             // Flip sign to get the depth of the pit
             lowestPoint *= -1;
 
-            // Update the deepest pit
             deepestPit = Math.Max(deepestPit, lowestPoint);
         }
 
@@ -78,9 +55,10 @@ public class DeepestPitAnswer
     }
 
     // Is peak/valley function
-    // TODO: This function isnt the most readable, potentially refactor.
-    private static bool IsPointAPeak(int point, int prePoint, int postPoint) => 
-        (point > prePoint && point > postPoint) || (point < prePoint && point < postPoint);
+    private static bool IsPointAPeak(int point, int prePoint, int postPoint)
+    {
+        return (point > prePoint && point > postPoint) || (point < prePoint && point < postPoint);
+    }
 }
 
 #region Footnotes

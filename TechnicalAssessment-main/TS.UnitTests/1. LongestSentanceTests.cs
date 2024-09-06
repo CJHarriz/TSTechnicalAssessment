@@ -31,4 +31,19 @@ public class LongestSentanceTests
         // Assert
         Assert.AreEqual(2, outcome);
     }
+
+
+    // Time to try break my solution!
+    [TestMethod]
+    public void Q1_TestWithNoWords()
+    {
+        // Arrange
+        var input = "";
+
+        // Act
+        var outcome = LongestSentanceAnswer.Solution(input);
+
+        // Assert
+        Assert.AreEqual(0, outcome);
+    }
 }
