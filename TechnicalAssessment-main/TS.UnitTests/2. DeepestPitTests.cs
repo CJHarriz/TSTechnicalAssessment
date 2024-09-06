@@ -8,9 +8,27 @@ public class DeepestPitTests
     [TestMethod]
     public void Q2_BasicNominalTest()
     {
-        var points = new[] {0, 1, 3, -2, 0, 1, -3, 2, 3};
-        var result = DeepestPitAnswer.Solution(points);
+        // Arrange
+        var input = new[] {0, 1, 3, -2, 0, 1, -3, 2, 3};
 
-        Assert.AreEqual(4, result);
+        // Act
+        var outcome = DeepestPitAnswer.Solution(input);
+
+        // Assert
+        Assert.AreEqual(4, outcome);
+    }
+
+    // The requested test
+    [TestMethod]
+    public void Q2_TestWithMultipleDelimetersAndSpaces()
+    {
+        // Arrange
+        var input = new[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 };
+
+        // Act
+        var outcome = DeepestPitAnswer.Solution(input);
+
+        // Assert
+        Assert.AreEqual(2, outcome);
     }
 }
