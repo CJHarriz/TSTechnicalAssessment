@@ -10,10 +10,14 @@ public class LongestSentanceAnswer
         // Instantiate a variable to store the most words in a sentence.
         var mostWords = 0;
 
-
+        // Iterate through the sentences and compare their word counts.
+        // TODo: I think a foreach makes more sense here.
         sentences.Aggregate((max, current) =>
         {
             // Going to split again and compare totals.
+            var words = current.Split(' ').Where(x => x.Length > 0).Count();
+            mostWords = words > mostWords ? words : mostWords;
+            return current;
         });
         return mostWords;
     }
