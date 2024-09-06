@@ -4,7 +4,18 @@ public class LongestSentanceAnswer
 {
     public static int Solution(string s)
     {
-        throw new NotImplementedException("Not completed yet");
+        // Separate the string via the sentence delimiters.
+        var sentences = s.Split(new char[] { '.', '?', '!' });
+
+        // Instantiate a variable to store the most words in a sentence.
+        var mostWords = 0;
+
+
+        sentences.Aggregate((max, current) =>
+        {
+            // Going to split again and compare totals.
+        });
+        return mostWords;
     }
 }
 
