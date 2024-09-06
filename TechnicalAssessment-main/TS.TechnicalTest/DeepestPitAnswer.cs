@@ -15,7 +15,7 @@ public class DeepestPitAnswer
          * Depth is the smaller of the two differences between the points. [*]
          * 
          * Use change in direction to determine a pit?
-         * 
+         * Try get relevent points below 0 that actually matter in defining a pit.
         */
 
         // Guard clause ensuring we can capture at least 3 points
@@ -24,6 +24,19 @@ public class DeepestPitAnswer
             Console.WriteLine("Not enough points to form a pit.");
             return -1;
         }
+
+        // Store all points below 0
+        int[] potentialPitBottoms = points.Where(x => x < 0).ToArray();
+
+        // Guard clause ensuring we can capture at least 1 point below 0
+        if (potentialPitBottoms.Length < 1)
+        {
+            Console.WriteLine("No points below 0 to form a pit.");
+            return -1;
+        }
+
+        // Compare adjacent points  
+
 
         // Default return -1
         return -1;
