@@ -16,6 +16,9 @@ public class DeepestPitAnswer
          * 
          * Use change in direction to determine a pit?
          * Try get relevent points below 0 that actually matter in defining a pit.
+         * An actual Pit bottom goes an indefinite amount left till a peak is found, same for the right?
+         * 
+         * Use all peaks and valleys to determine the depth of the pit. [Try]
         */
 
         // Guard clause ensuring we can capture at least 3 points
@@ -25,18 +28,9 @@ public class DeepestPitAnswer
             return -1;
         }
 
-        // Store all points below 0
-        int[] potentialPitBottoms = points.Where(x => x < 0).ToArray();
+        // Get all the peaks and valleys
 
-        // Guard clause ensuring we can capture at least 1 point below 0
-        if (potentialPitBottoms.Length < 1)
-        {
-            Console.WriteLine("No points below 0 to form a pit.");
-            return -1;
-        }
-
-        // Compare adjacent points  
-
+        // Compare the peaks and valleys to find the deepest pit
 
         // Default return -1
         return -1;
